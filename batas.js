@@ -1,7 +1,7 @@
 $(function () {
 
     function get_batas_time() {
-        return new Date("July 26, 2021 00:00:00").getTime();
+        return new Date("July 30, 2021 00:00:00").getTime();
     }
 
     function get_current_time() {
