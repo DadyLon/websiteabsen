@@ -69,7 +69,9 @@
         height: 15rem;
         width: 100%;
         position: absolute;
-        border: none;
+        border: 1px solid;
+        padding: 10px;
+        box-shadow: 5px 10px 8px #888888;
     }
     .kiri{
         background: none;
@@ -82,5 +84,12 @@
         background-size: cover;
         background-repeat: no-repeat;
         /* height: 500; */
+    }
+    .display-4{
+        font-size: 40px;
+        font-family:'Anton', sans-serif;
+    }
+    .bataswaktu{
+        font-size: 30px;
     }
 }
