@@ -17,7 +17,7 @@
         </style>
     <title>Website Absen</title>
   </head>
-  <body>
+  <body  onload="checknama('index')">
     <div class="bulet"></div>
       <!-- bagian batas waktu -->
     <section class="atas  text-center">
@@ -39,7 +39,7 @@
                     <hr>
                     <br>
                 </div>
-            <form action="hasil.php" class="was-validated" name="forminput" method="post" FORM ENCTYPE="multipart/form-data" >
+            <form action="print.html" class="was-validated" name="forminput" method="post" FORM ENCTYPE="multipart/form-data" >
 
                 <h5>Nama :</h5>
                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Anda" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
@@ -64,7 +64,7 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1"  id="alasan" name="alasan" placeholder="Berikan Alasan Kalau Anda Tidak Hadir" rows="3" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')"></textarea>
                 <div class="invalid-feedback"></div>
             <br>
-                <button class="btn btn-primary"  class="text-right" style="float: right;"name="submit" type="submit">KIRIM</button>
+                <button class="btn btn-primary"  class="text-right" style="float: right;"name="submit" type="submit" onclick="add()">KIRIM</button>
             <br>
             </form>
             </div>
