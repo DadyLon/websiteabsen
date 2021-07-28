@@ -17,7 +17,7 @@
         </style>
     <title>Website Absen</title>
   </head>
-  <body  onload="checknama('index')">
+  <body >
     <div class="bulet"></div>
       <!-- bagian batas waktu -->
     <section class="atas  text-center">
@@ -39,7 +39,7 @@
                     <hr>
                     <br>
                 </div>
-            <form class="was-validated" name="forminput" method="post" FORM ENCTYPE="multipart/form-data" >
+            <form class="was-validated" name="submit-to-google-sheet" method="post" FORM ENCTYPE="multipart/form-data" >
 
                 <h5>Nama :</h5>
                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Anda" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
@@ -51,12 +51,12 @@
             <br>
                 <h5>Keterangan</h5>
                 <div class="form-check form-check-inline cekhadir">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" style="height:25px; width:25px; " id="inlineRadio1" value="option1">
-                    <label class="form-check-label" for="inlineRadio1">Hadir</label>
+                    <input class="form-check-input" type="radio" name="keterangan" style="height:25px; width:25px; " id="keterangan1" value="hadir">
+                    <label class="form-check-label" for="keterangan1">Hadir</label>
                   </div>
                 <div class="form-check form-check-inline cekhadir">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" style="height:25px; width:25px; " id="inlineRadio2" value="option2">
-                    <label class="form-check-label" for="inlineRadio2">Tidak Hadir</label>
+                    <input class="form-check-input" type="radio" name="keterangan" style="height:25px; width:25px; " id="keterangan2" value="tidak hadir">
+                    <label class="form-check-label" for="keterangan2">Tidak Hadir</label>
                   </div>
             <br>
             <br>
@@ -64,7 +64,7 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1"  id="alasan" name="alasan" placeholder="Berikan Alasan Kalau Anda Tidak Hadir" rows="3" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')"></textarea>
                 <div class="invalid-feedback"></div>
             <br>
-            <a href="print.html"><input type="button" class="btn btn-primary"  class="text-right" style="float: right;" name="submit" type="submit" value="KIRIM"></a>
+            <button class="text-right btn btn-primary" style="float: right;"name="submit" type="submit">KIRIM</button>
                 <!-- <button class="btn btn-primary" href="print.html" class="text-right" style="float: right;"name="submit" type="submit">KIRIM</button> -->
             <br>
             </form>
@@ -90,5 +90,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="batas.js"></script>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxCsoZu7zgi8mgBwfO61QMgpKojHlED9fAh9GgCOZCS1co9WVVYYZlCcRAX2TdOXfFl/exec';
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                console.log('Success!', response)
+                window.location = "print.html";
+                form.reset();
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
 </body>
 </html>
